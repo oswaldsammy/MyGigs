@@ -1,0 +1,12 @@
+{
+  "name": "mygigs",
+  "private": true,
+  "version": "0.0.1",
+  "scripts": {
+    "dev:client": "pnpm --filter @mygigs/client-app dev",
+    "dev:musician": "pnpm --filter @mygigs/musician-app dev",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "packageManager": "pnpm@9.0.0"
+}

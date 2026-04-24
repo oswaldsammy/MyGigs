@@ -1,0 +1,2 @@
+-- MyGigs seed data (run after creating auth users manually for local dev)
+-- Example placeholder: insert into public.users (id, role, full_name, city) values (...);
