@@ -2,7 +2,17 @@ import { Link, Navigate, Route, Routes } from 'react-router-dom';
 import { useAuth } from '@mygigs/shared';
 import { LoginPage } from './pages/LoginPage';
 import { SignupPage } from './pages/SignupPage';
-import { PlaceholderPage } from './pages/PlaceholderPage';
+import { HomePage } from './pages/HomePage';
+import { SearchPage } from './pages/SearchPage';
+import { MusicianProfilePage } from './pages/MusicianProfilePage';
+import { BookingFormPage } from './pages/BookingFormPage';
+import { MyBookingsPage } from './pages/MyBookingsPage';
+import { BookingDetailPage } from './pages/BookingDetailPage';
+import { MessagesListPage } from './pages/MessagesListPage';
+import { ChatPage } from './pages/ChatPage';
+import { ReviewPage } from './pages/ReviewPage';
+import { ProfilePage } from './pages/ProfilePage';
+import { PaymentsPage } from './pages/PaymentsPage';
 import { ProtectedRoute } from './routes/ProtectedRoute';
 
 const NavBar = () => {
@@ -38,18 +48,18 @@ export default function App() {
           <Route path="/auth/login" element={<LoginPage />} />
           <Route path="/auth/signup" element={<SignupPage />} />
 
-          <Route path="/" element={<PlaceholderPage title="Home" note="Search + featured musicians" />} />
-          <Route path="/search" element={<PlaceholderPage title="Search" note="Filtered listing" />} />
-          <Route path="/musician/:id" element={<PlaceholderPage title="Musician Profile" />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/musician/:id" element={<MusicianProfilePage />} />
 
-          <Route path="/book/:musicianId" element={guarded(<PlaceholderPage title="Book Musician" />)} />
-          <Route path="/bookings" element={guarded(<PlaceholderPage title="My Bookings" />)} />
-          <Route path="/bookings/:id" element={guarded(<PlaceholderPage title="Booking Detail" />)} />
-          <Route path="/messages" element={guarded(<PlaceholderPage title="Messages" />)} />
-          <Route path="/messages/:bookingId" element={guarded(<PlaceholderPage title="Chat" />)} />
-          <Route path="/reviews/new/:bookingId" element={guarded(<PlaceholderPage title="Leave a Review" />)} />
-          <Route path="/profile" element={guarded(<PlaceholderPage title="My Profile" />)} />
-          <Route path="/payments" element={guarded(<PlaceholderPage title="Payments" note="Payment integration coming soon" />)} />
+          <Route path="/book/:musicianId" element={guarded(<BookingFormPage />)} />
+          <Route path="/bookings" element={guarded(<MyBookingsPage />)} />
+          <Route path="/bookings/:id" element={guarded(<BookingDetailPage />)} />
+          <Route path="/messages" element={guarded(<MessagesListPage />)} />
+          <Route path="/messages/:bookingId" element={guarded(<ChatPage />)} />
+          <Route path="/reviews/new/:bookingId" element={guarded(<ReviewPage />)} />
+          <Route path="/profile" element={guarded(<ProfilePage />)} />
+          <Route path="/payments" element={guarded(<PaymentsPage />)} />
 
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
