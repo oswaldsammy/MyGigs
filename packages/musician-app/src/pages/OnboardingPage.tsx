@@ -125,12 +125,12 @@ export const OnboardingPage = () => {
           <span>Step {step} of 6</span>
           <span>{Math.round((step / 6) * 100)}%</span>
         </div>
-        <div className="h-2 w-full overflow-hidden rounded-full bg-gray-200">
-          <div className="h-full bg-brand-600 transition-all" style={{ width: `${(step / 6) * 100}%` }} />
+        <div className="h-2 w-full overflow-hidden rounded-full bg-line">
+          <div className="h-full bg-brand-400 text-black transition-all" style={{ width: `${(step / 6) * 100}%` }} />
         </div>
       </div>
 
-      <div className="rounded-2xl bg-white p-6 shadow-sm">
+      <div className="rounded-2xl bg-elev p-6 shadow-sm">
         {step === 1 && (
           <Step title="Basic info">
             <Input label="Full name" value={state.full_name} onChange={(v) => set('full_name', v)} />
@@ -161,7 +161,7 @@ export const OnboardingPage = () => {
             <div>
               <Label>Profile photo</Label>
               <div className="flex items-center gap-4">
-                <div className="h-20 w-20 overflow-hidden rounded-full bg-gray-200">
+                <div className="h-20 w-20 overflow-hidden rounded-full bg-line">
                   {state.avatar_url && <img src={state.avatar_url} alt="" className="h-full w-full object-cover" />}
                 </div>
                 <FileUpload folder="avatars" accept="image/*" label="Upload photo"
@@ -182,7 +182,7 @@ export const OnboardingPage = () => {
                     }}
                     className="flex-1 rounded-lg border px-2 py-1 text-sm" />
                   <button type="button" onClick={() => set('sample_tracks', state.sample_tracks.filter((_, j) => j !== i))}
-                    className="text-xs text-red-600 hover:underline">Remove</button>
+                    className="text-xs text-red-400 hover:underline">Remove</button>
                 </div>
               ))}
               {state.sample_tracks.length < 5 && (
@@ -200,7 +200,7 @@ export const OnboardingPage = () => {
             <div>
               <Label>ID document (required)</Label>
               {state.id_doc_url ? (
-                <div className="rounded-lg bg-green-50 px-3 py-2 text-sm text-green-700">
+                <div className="rounded-lg bg-emerald-500/10 px-3 py-2 text-sm text-green-700">
                   ✓ Uploaded · <button onClick={() => set('id_doc_url', null)} className="underline">remove</button>
                 </div>
               ) : (
@@ -210,7 +210,7 @@ export const OnboardingPage = () => {
             <div>
               <Label>Professional certificate (optional)</Label>
               {state.cert_doc_url ? (
-                <div className="rounded-lg bg-green-50 px-3 py-2 text-sm text-green-700">
+                <div className="rounded-lg bg-emerald-500/10 px-3 py-2 text-sm text-green-700">
                   ✓ Uploaded · <button onClick={() => set('cert_doc_url', null)} className="underline">remove</button>
                 </div>
               ) : (
@@ -246,10 +246,10 @@ export const OnboardingPage = () => {
             Back
           </button>
           {step < 6 ? (
-            <button onClick={next} className="rounded-lg bg-brand-600 px-4 py-2 text-sm text-white">Next</button>
+            <button onClick={next} className="rounded-lg bg-brand-400 text-black px-4 py-2 text-sm text-white">Next</button>
           ) : (
             <button onClick={submit} disabled={submitting}
-              className="rounded-lg bg-brand-600 px-4 py-2 text-sm text-white disabled:opacity-50">
+              className="rounded-lg bg-brand-400 text-black px-4 py-2 text-sm text-white disabled:opacity-50">
               {submitting ? 'Submitting…' : 'Submit for review'}
             </button>
           )}
@@ -286,7 +286,7 @@ const Chips = ({ label, options, selected, onToggle }: { label: string; options:
         const on = selected.includes(o);
         return (
           <button type="button" key={o} onClick={() => onToggle(o)}
-            className={`rounded-full px-3 py-1 text-sm ${on ? 'bg-brand-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
+            className={`rounded-full px-3 py-1 text-sm ${on ? 'bg-brand-400 text-black' : 'bg-elev text-gray-300 hover:bg-line'}`}>
             {o}
           </button>
         );

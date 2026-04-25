@@ -59,13 +59,13 @@ export const GigDetailPage = () => {
         <BookingStatusBadge status={booking.status} />
       </div>
 
-      <ol className="flex flex-wrap items-center gap-2 rounded-2xl border bg-white p-4 text-sm">
+      <ol className="flex flex-wrap items-center gap-2 rounded-2xl border bg-elev p-4 text-sm">
         {STAGES.map((s, i) => {
           const done = i <= stageIdx && stageIdx >= 0;
           return (
             <li key={s} className="flex items-center gap-2">
               <span className={`flex h-6 w-6 items-center justify-center rounded-full text-xs ${
-                done ? 'bg-brand-600 text-white' : 'bg-gray-200 text-gray-500'
+                done ? 'bg-brand-400 text-black' : 'bg-line text-gray-500'
               }`}>{i + 1}</span>
               <span className={done ? 'font-medium' : 'text-gray-500'}>{STAGE_LABEL[s]}</span>
               {i < STAGES.length - 1 && <span className="text-gray-300">›</span>}
@@ -75,7 +75,7 @@ export const GigDetailPage = () => {
       </ol>
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <div className="rounded-2xl border bg-white p-5">
+        <div className="rounded-2xl border bg-elev p-5">
           <h2 className="mb-3 font-semibold">Event</h2>
           <Row k="Date" v={formatDate(booking.event_date)} />
           <Row k="Time" v={formatTime(booking.start_time)} />
@@ -84,14 +84,14 @@ export const GigDetailPage = () => {
           <Row k="Address" v={booking.venue_address ?? '—'} />
           <Row k="Type" v={booking.event_type ?? '—'} />
           {booking.special_requests && (
-            <div className="mt-3 rounded-lg bg-gray-50 p-3 text-sm">{booking.special_requests}</div>
+            <div className="mt-3 rounded-lg bg-surface p-3 text-sm">{booking.special_requests}</div>
           )}
         </div>
 
-        <div className="rounded-2xl border bg-white p-5">
+        <div className="rounded-2xl border bg-elev p-5">
           <h2 className="mb-3 font-semibold">Client</h2>
           <div className="flex items-center gap-3">
-            <div className="h-12 w-12 overflow-hidden rounded-full bg-gray-200">
+            <div className="h-12 w-12 overflow-hidden rounded-full bg-line">
               {booking.client?.avatar_url && <img src={booking.client.avatar_url} alt="" className="h-full w-full object-cover" />}
             </div>
             <div>
@@ -102,20 +102,20 @@ export const GigDetailPage = () => {
         </div>
       </div>
 
-      <div className="rounded-2xl border bg-white p-5">
+      <div className="rounded-2xl border bg-elev p-5">
         <h2 className="mb-3 font-semibold">Actions</h2>
         {booking.status === 'pending' && !showDecline && (
           <div className="flex flex-wrap gap-2">
             <button disabled={busy} onClick={accept}
-              className="rounded-lg bg-brand-600 px-4 py-2 text-sm text-white disabled:opacity-50">
+              className="rounded-lg bg-brand-400 text-black px-4 py-2 text-sm text-white disabled:opacity-50">
               Accept
             </button>
             <Link to={`/quotes/${id}`}
-              className="rounded-lg border border-brand-600 px-4 py-2 text-sm text-brand-600 hover:bg-brand-50">
+              className="rounded-lg border border-brand-400 px-4 py-2 text-sm text-brand-400 hover:bg-brand-400/10">
               Accept & send quote
             </Link>
             <button disabled={busy} onClick={() => setShowDecline(true)}
-              className="rounded-lg border border-red-300 px-4 py-2 text-sm text-red-600 disabled:opacity-50">
+              className="rounded-lg border border-red-500/40 px-4 py-2 text-sm text-red-400 disabled:opacity-50">
               Decline
             </button>
           </div>
@@ -137,18 +137,18 @@ export const GigDetailPage = () => {
           </div>
         )}
         {booking.status === 'accepted' && !pendingQuote && (
-          <Link to={`/quotes/${id}`} className="rounded-lg bg-brand-600 px-4 py-2 text-sm text-white">
+          <Link to={`/quotes/${id}`} className="rounded-lg bg-brand-400 text-black px-4 py-2 text-sm text-white">
             Send quote
           </Link>
         )}
         {pendingQuote && (
-          <div className="rounded-xl bg-amber-50 p-4 text-sm">
+          <div className="rounded-xl bg-amber-500/10 p-4 text-sm">
             <p>Quote sent: <strong>{formatCurrency(pendingQuote.amount)}</strong> · awaiting client response.</p>
-            <Link to={`/quotes/${id}`} className="mt-2 inline-block text-brand-600 hover:underline">Edit quote</Link>
+            <Link to={`/quotes/${id}`} className="mt-2 inline-block text-brand-400 hover:underline">Edit quote</Link>
           </div>
         )}
         {acceptedQuote && (
-          <div className="rounded-xl bg-green-50 p-4 text-sm text-green-800">
+          <div className="rounded-xl bg-emerald-500/10 p-4 text-sm text-emerald-300">
             ✓ Quote accepted at {formatCurrency(acceptedQuote.amount)}. Booking confirmed.
           </div>
         )}
@@ -157,7 +157,7 @@ export const GigDetailPage = () => {
         )}
       </div>
 
-      <div className="rounded-2xl border bg-white p-5">
+      <div className="rounded-2xl border bg-elev p-5">
         <h2 className="mb-2 font-semibold">Contract</h2>
         <p className="text-gray-500">Contract details will appear here.</p>
       </div>

@@ -37,10 +37,10 @@ export const ProfilePage = () => {
 
   return (
     <div className="mx-auto max-w-lg space-y-6 px-6 py-8">
-      <div className="rounded-2xl bg-white p-6 shadow-sm">
+      <div className="rounded-2xl bg-elev p-6 shadow-sm">
         <h1 className="mb-4 text-xl font-bold">Profile</h1>
         <div className="mb-4 flex items-center gap-4">
-          <div className="h-20 w-20 overflow-hidden rounded-full bg-gray-200">
+          <div className="h-20 w-20 overflow-hidden rounded-full bg-line">
             {me.avatar_url && <img src={me.avatar_url} alt="" className="h-full w-full object-cover" />}
           </div>
           <FileUpload
@@ -66,15 +66,15 @@ export const ProfilePage = () => {
             <input {...register('phone')} className="w-full rounded-lg border px-3 py-2" />
           </Field>
           <button disabled={saving}
-            className="w-full rounded-lg bg-brand-600 py-2.5 font-medium text-white disabled:opacity-50">
+            className="w-full rounded-lg bg-brand-400 text-black py-2.5 font-medium text-white disabled:opacity-50">
             {saving ? 'Saving…' : 'Save changes'}
           </button>
         </form>
       </div>
 
-      <div className="rounded-2xl border border-red-200 bg-white p-6">
-        <h2 className="mb-2 font-semibold text-red-600">Account</h2>
-        <button onClick={signOut} className="text-sm text-red-600 hover:underline">Sign out</button>
+      <div className="rounded-2xl border border-red-500/30 bg-elev p-6">
+        <h2 className="mb-2 font-semibold text-red-400">Account</h2>
+        <button onClick={signOut} className="text-sm text-red-400 hover:underline">Sign out</button>
       </div>
     </div>
   );

@@ -41,7 +41,7 @@ export const FileUpload = ({ bucket = 'mygigs-assets', folder, accept, label = '
       <button
         type="button"
         onClick={() => inputRef.current?.click()}
-        className="inline-flex items-center gap-2 rounded-lg border border-dashed border-gray-300 bg-white px-4 py-2 text-sm hover:border-brand-600 hover:text-brand-600"
+        className="inline-flex items-center gap-2 rounded-lg border border-dashed border-line bg-elev px-4 py-2 text-sm hover:border-brand-400 hover:text-brand-400"
       >
         📎 {label}
       </button>
@@ -57,11 +57,11 @@ export const FileUpload = ({ bucket = 'mygigs-assets', folder, accept, label = '
         }}
       />
       {progress !== null && (
-        <div className="mt-2 h-1 w-full overflow-hidden rounded bg-gray-100">
-          <div className="h-full bg-brand-600 transition-all" style={{ width: `${progress}%` }} />
+        <div className="mt-2 h-1 w-full overflow-hidden rounded bg-elev">
+          <div className="h-full bg-brand-400 text-black transition-all" style={{ width: `${progress}%` }} />
         </div>
       )}
-      {error && <p className="mt-1 text-xs text-red-600">{error}</p>}
+      {error && <p className="mt-1 text-xs text-red-400">{error}</p>}
     </div>
   );
 };

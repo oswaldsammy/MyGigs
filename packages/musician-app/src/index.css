@@ -3,4 +3,9 @@
 @tailwind utilities;
 
 html, body, #root { height: 100%; }
-body { @apply bg-gray-50 text-gray-900 antialiased; }
+body { @apply bg-black text-white antialiased; }
+
+input, textarea, select { @apply bg-elev border-line text-white placeholder-gray-500; }
+input::placeholder, textarea::placeholder { @apply text-gray-500; }
+*:focus { outline: none; }
+input:focus, textarea:focus, select:focus { @apply ring-2 ring-brand-400; }

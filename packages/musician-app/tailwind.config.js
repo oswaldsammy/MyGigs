@@ -4,11 +4,16 @@ export default {
   theme: {
     extend: {
       colors: {
+        bg: '#000000',
+        surface: '#0a0a0a',
+        elev: '#141414',
+        line: '#1f1f1f',
         brand: {
-          50: '#eef5ff',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
+          50: '#ecfccb',
+          400: '#d4ff3a',
+          500: '#c4f000',
+          600: '#a3d100',
+          700: '#86b300',
         },
       },
     },

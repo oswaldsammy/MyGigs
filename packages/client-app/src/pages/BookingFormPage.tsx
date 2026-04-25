@@ -66,9 +66,9 @@ export const BookingFormPage = () => {
 
   return (
     <div className="mx-auto grid max-w-5xl gap-6 px-6 py-8 lg:grid-cols-[1fr_320px]">
-      <form onSubmit={handleSubmit(onSubmit)} className="rounded-2xl bg-white p-6 shadow-sm">
-        <div className="mb-6 flex items-center gap-3 rounded-xl bg-gray-50 p-3">
-          <div className="h-12 w-12 overflow-hidden rounded-full bg-gray-200">
+      <form onSubmit={handleSubmit(onSubmit)} className="rounded-2xl bg-elev p-6 shadow-sm">
+        <div className="mb-6 flex items-center gap-3 rounded-xl bg-surface p-3">
+          <div className="h-12 w-12 overflow-hidden rounded-full bg-line">
             {musician.user?.avatar_url ? <img src={musician.user.avatar_url} alt="" className="h-full w-full object-cover" /> : null}
           </div>
           <div>
@@ -111,7 +111,7 @@ export const BookingFormPage = () => {
         </div>
 
         <button disabled={submitting}
-          className="mt-6 w-full rounded-lg bg-brand-600 py-3 font-medium text-white hover:bg-brand-700 disabled:opacity-50">
+          className="mt-6 w-full rounded-lg bg-brand-400 text-black py-3 font-medium text-white hover:bg-brand-500 disabled:opacity-50">
           {submitting ? 'Sending…' : 'Send booking request'}
         </button>
         <p className="mt-2 text-center text-xs text-gray-500">
@@ -119,7 +119,7 @@ export const BookingFormPage = () => {
         </p>
       </form>
 
-      <aside className="h-fit rounded-2xl border bg-white p-5 shadow-sm lg:sticky lg:top-6">
+      <aside className="h-fit rounded-2xl border bg-elev p-5 shadow-sm lg:sticky lg:top-6">
         <h2 className="mb-3 font-semibold">Price estimate</h2>
         <div className="space-y-2 text-sm">
           <Row label={`${formatCurrency(rate)} × ${duration} hrs`} value={formatCurrency(subtotal)} />
@@ -136,7 +136,7 @@ const Field = ({ label, error, children, className }: { label: string; error?: s
   <div className={className}>
     <label className="mb-1 block text-sm font-medium">{label}</label>
     {children}
-    {error && <p className="mt-1 text-xs text-red-600">{error}</p>}
+    {error && <p className="mt-1 text-xs text-red-400">{error}</p>}
   </div>
 );
 

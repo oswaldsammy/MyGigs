@@ -69,13 +69,13 @@ export const BookingDetailPage = () => {
         <BookingStatusBadge status={booking.status} />
       </div>
 
-      <ol className="flex flex-wrap items-center gap-2 rounded-2xl border bg-white p-4 text-sm">
+      <ol className="flex flex-wrap items-center gap-2 rounded-2xl border bg-elev p-4 text-sm">
         {STAGES.map((s, i) => {
           const done = i <= stageIdx && stageIdx >= 0;
           return (
             <li key={s} className="flex items-center gap-2">
               <span className={`flex h-6 w-6 items-center justify-center rounded-full text-xs ${
-                done ? 'bg-brand-600 text-white' : 'bg-gray-200 text-gray-500'
+                done ? 'bg-brand-400 text-black' : 'bg-line text-gray-500'
               }`}>{i + 1}</span>
               <span className={done ? 'font-medium' : 'text-gray-500'}>{STAGE_LABEL[s]}</span>
               {i < STAGES.length - 1 && <span className="text-gray-300">›</span>}
@@ -85,7 +85,7 @@ export const BookingDetailPage = () => {
       </ol>
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <div className="rounded-2xl border bg-white p-5">
+        <div className="rounded-2xl border bg-elev p-5">
           <h2 className="mb-3 font-semibold">Event</h2>
           <Row k="Date" v={formatDate(booking.event_date)} />
           <Row k="Time" v={formatTime(booking.start_time)} />
@@ -94,14 +94,14 @@ export const BookingDetailPage = () => {
           <Row k="Address" v={booking.venue_address ?? '—'} />
           <Row k="Type" v={booking.event_type ?? '—'} />
           {booking.special_requests && (
-            <div className="mt-3 rounded-lg bg-gray-50 p-3 text-sm">{booking.special_requests}</div>
+            <div className="mt-3 rounded-lg bg-surface p-3 text-sm">{booking.special_requests}</div>
           )}
         </div>
 
-        <Link to={`/musician/${booking.musician_id}`} className="rounded-2xl border bg-white p-5 hover:shadow">
+        <Link to={`/musician/${booking.musician_id}`} className="rounded-2xl border bg-elev p-5 hover:shadow">
           <h2 className="mb-3 font-semibold">Musician</h2>
           <div className="flex items-center gap-3">
-            <div className="h-12 w-12 overflow-hidden rounded-full bg-gray-200">
+            <div className="h-12 w-12 overflow-hidden rounded-full bg-line">
               {booking.musician?.user?.avatar_url && (
                 <img src={booking.musician.user.avatar_url} alt="" className="h-full w-full object-cover" />
               )}
@@ -111,39 +111,39 @@ export const BookingDetailPage = () => {
               <p className="text-sm text-gray-500">{booking.musician?.user?.city}</p>
             </div>
           </div>
-          <p className="mt-3 text-sm text-brand-600">View profile →</p>
+          <p className="mt-3 text-sm text-brand-400">View profile →</p>
         </Link>
       </div>
 
       {pendingQuote && (
-        <div className="rounded-2xl border-2 border-brand-200 bg-brand-50 p-5">
+        <div className="rounded-2xl border-2 border-brand-200 bg-brand-400/10 p-5">
           <h2 className="mb-2 font-semibold">Quote received</h2>
-          <p className="text-2xl font-bold text-brand-700">{formatCurrency(pendingQuote.amount)}</p>
-          {pendingQuote.message && <p className="mt-1 text-sm text-gray-700">{pendingQuote.message}</p>}
+          <p className="text-2xl font-bold text-brand-400">{formatCurrency(pendingQuote.amount)}</p>
+          {pendingQuote.message && <p className="mt-1 text-sm text-gray-300">{pendingQuote.message}</p>}
           {pendingQuote.expires_at && (
             <p className="mt-1 text-xs text-gray-500">Expires {new Date(pendingQuote.expires_at).toLocaleString()}</p>
           )}
           <div className="mt-3 flex gap-2">
             <button disabled={busy} onClick={() => onAccept(pendingQuote)}
-              className="rounded-lg bg-brand-600 px-4 py-2 text-sm text-white hover:bg-brand-700 disabled:opacity-50">
+              className="rounded-lg bg-brand-400 text-black px-4 py-2 text-sm text-white hover:bg-brand-500 disabled:opacity-50">
               Accept quote
             </button>
             <button disabled={busy} onClick={() => onDecline(pendingQuote)}
-              className="rounded-lg border px-4 py-2 text-sm hover:bg-gray-50 disabled:opacity-50">
+              className="rounded-lg border px-4 py-2 text-sm hover:bg-surface disabled:opacity-50">
               Decline
             </button>
           </div>
         </div>
       )}
 
-      <div className="rounded-2xl border bg-white p-5">
+      <div className="rounded-2xl border bg-elev p-5">
         <h2 className="mb-2 font-semibold">Contract</h2>
         <p className="text-gray-500">Contract will appear here.</p>
       </div>
 
-      <div className="rounded-2xl border-2 border-dashed bg-amber-50 p-5">
+      <div className="rounded-2xl border-2 border-dashed bg-amber-500/10 p-5">
         <h2 className="mb-1 font-semibold">Payment</h2>
-        <p className="text-sm text-gray-700">Payment integration coming soon.</p>
+        <p className="text-sm text-gray-300">Payment integration coming soon.</p>
       </div>
 
       <div>
@@ -152,13 +152,13 @@ export const BookingDetailPage = () => {
       </div>
 
       {booking.status === 'completed' && (
-        <Link to={`/reviews/new/${id}`} className="block rounded-lg bg-brand-600 py-2.5 text-center font-medium text-white">
+        <Link to={`/reviews/new/${id}`} className="block rounded-lg bg-brand-400 text-black py-2.5 text-center font-medium text-white">
           Leave a review
         </Link>
       )}
       {canCancel && (
         <button disabled={busy} onClick={onCancel}
-          className="w-full rounded-lg border border-red-300 py-2.5 text-red-600 hover:bg-red-50">
+          className="w-full rounded-lg border border-red-500/40 py-2.5 text-red-400 hover:bg-red-500/10">
           Cancel booking
         </button>
       )}

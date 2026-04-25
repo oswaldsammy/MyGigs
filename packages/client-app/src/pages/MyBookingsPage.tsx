@@ -31,7 +31,7 @@ export const MyBookingsPage = () => {
             key={t.key}
             onClick={() => setTab(t.key)}
             className={`px-4 py-2 text-sm ${
-              tab === t.key ? 'border-b-2 border-brand-600 text-brand-600' : 'text-gray-500 hover:text-gray-900'
+              tab === t.key ? 'border-b-2 border-brand-400 text-brand-400' : 'text-gray-500 hover:text-white'
             }`}
           >
             {t.label}
@@ -44,7 +44,7 @@ export const MyBookingsPage = () => {
       ) : rows.length === 0 ? (
         <div className="rounded-xl border-2 border-dashed p-12 text-center">
           <p className="text-gray-500">No {tab === 'all' ? '' : tab} bookings yet.</p>
-          <Link to="/search" className="mt-3 inline-block text-brand-600 hover:underline">Browse musicians →</Link>
+          <Link to="/search" className="mt-3 inline-block text-brand-400 hover:underline">Browse musicians →</Link>
         </div>
       ) : (
         <div className="space-y-3">
@@ -52,9 +52,9 @@ export const MyBookingsPage = () => {
             <Link
               key={b.id}
               to={`/bookings/${b.id}`}
-              className="flex items-center gap-4 rounded-xl border bg-white p-4 hover:shadow"
+              className="flex items-center gap-4 rounded-xl border bg-elev p-4 hover:shadow"
             >
-              <div className="h-12 w-12 overflow-hidden rounded-full bg-gray-200">
+              <div className="h-12 w-12 overflow-hidden rounded-full bg-line">
                 {b.musician?.user?.avatar_url && <img src={b.musician.user.avatar_url} alt="" className="h-full w-full object-cover" />}
               </div>
               <div className="min-w-0 flex-1">

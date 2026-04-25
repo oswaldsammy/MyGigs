@@ -28,10 +28,10 @@ export const HomePage = () => {
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-10">
-      <section className="rounded-3xl bg-gradient-to-br from-brand-600 to-purple-600 px-8 py-12 text-white">
+      <section className="rounded-3xl bg-gradient-to-br from-brand-500/20 to-fuchsia-500/20 border border-line px-8 py-12 text-white">
         <h1 className="text-3xl font-bold sm:text-4xl">Find the perfect musician for your event</h1>
         <p className="mt-2 text-white/80">Live music, every occasion. Browse, book, done.</p>
-        <form onSubmit={search} className="mt-6 grid gap-3 rounded-2xl bg-white p-4 text-gray-900 sm:grid-cols-4">
+        <form onSubmit={search} className="mt-6 grid gap-3 rounded-2xl bg-elev p-4 text-white sm:grid-cols-4">
           <select value={genre} onChange={(e) => setGenre(e.target.value)} className="rounded-lg border px-3 py-2">
             <option value="">Any genre</option>
             <option>Jazz</option><option>Rock</option><option>Pop</option><option>Classical</option>
@@ -48,17 +48,17 @@ export const HomePage = () => {
             <option>Guitar</option><option>Piano</option><option>Drums</option><option>Vocals</option>
             <option>Saxophone</option><option>Violin</option><option>Bass</option>
           </select>
-          <button className="rounded-lg bg-brand-600 px-4 py-2 font-medium text-white">Find musicians</button>
+          <button className="rounded-lg bg-brand-400 text-black px-4 py-2 font-medium text-white">Find musicians</button>
         </form>
       </section>
 
       <section className="mt-10">
         <h2 className="mb-4 text-xl font-bold">Top rated musicians</h2>
-        {error && <p className="text-red-600">{error}</p>}
+        {error && <p className="text-red-400">{error}</p>}
         {musicians === null ? (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {Array.from({ length: 4 }).map((_, i) => (
-              <div key={i} className="h-48 animate-pulse rounded-2xl bg-gray-100" />
+              <div key={i} className="h-48 animate-pulse rounded-2xl bg-elev" />
             ))}
           </div>
         ) : musicians.length === 0 ? (

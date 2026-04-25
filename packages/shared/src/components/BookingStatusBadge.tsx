@@ -1,13 +1,13 @@
 import type { BookingStatus } from '../types/database';
 
 const styles: Record<BookingStatus, string> = {
-  pending: 'bg-amber-100 text-amber-800',
-  accepted: 'bg-blue-100 text-blue-800',
-  negotiating: 'bg-indigo-100 text-indigo-800',
-  confirmed: 'bg-green-100 text-green-800',
-  completed: 'bg-gray-200 text-gray-700',
-  cancelled: 'bg-red-100 text-red-800',
-  declined: 'bg-red-100 text-red-800',
+  pending: 'bg-amber-500/100/15 text-amber-300',
+  accepted: 'bg-blue-500/15 text-blue-300',
+  negotiating: 'bg-indigo-500/15 text-indigo-300',
+  confirmed: 'bg-emerald-500/15 text-emerald-300',
+  completed: 'bg-line text-gray-300',
+  cancelled: 'bg-red-500/100/15 text-red-300',
+  declined: 'bg-red-500/100/15 text-red-300',
 };
 
 const labels: Record<BookingStatus, string> = {

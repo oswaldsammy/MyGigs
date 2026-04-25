@@ -38,7 +38,7 @@ export const SearchPage = () => {
 
   return (
     <div className="mx-auto grid max-w-6xl gap-6 px-6 py-8 lg:grid-cols-[260px_1fr]">
-      <aside className="space-y-4 rounded-xl border bg-white p-4">
+      <aside className="space-y-4 rounded-xl border bg-elev p-4">
         <h2 className="font-semibold">Filters</h2>
         <div>
           <label className="mb-1 block text-xs font-medium">Genre</label>
@@ -75,14 +75,14 @@ export const SearchPage = () => {
           <input type="range" min={0} max={500} step={10} value={maxRate}
             onChange={(e) => update('maxRate', e.target.value)} className="w-full" />
         </div>
-        <button onClick={() => setParams(new URLSearchParams())} className="text-xs text-brand-600 hover:underline">
+        <button onClick={() => setParams(new URLSearchParams())} className="text-xs text-brand-400 hover:underline">
           Clear all filters
         </button>
       </aside>
 
       <section>
         <div className="mb-4 flex items-center justify-between">
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-gray-400">
             {results ? `Showing ${results.length} musicians` : 'Loading…'}
           </p>
           <select
@@ -96,11 +96,11 @@ export const SearchPage = () => {
             <option value="price_desc">Price: high to low</option>
           </select>
         </div>
-        {error && <p className="text-red-600">{error}</p>}
+        {error && <p className="text-red-400">{error}</p>}
         {results === null ? (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="h-48 animate-pulse rounded-2xl bg-gray-100" />
+              <div key={i} className="h-48 animate-pulse rounded-2xl bg-elev" />
             ))}
           </div>
         ) : results.length === 0 ? (

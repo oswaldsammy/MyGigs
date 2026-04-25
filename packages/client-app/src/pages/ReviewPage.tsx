@@ -52,9 +52,9 @@ export const ReviewPage = () => {
 
   return (
     <div className="mx-auto max-w-lg px-6 py-8">
-      <div className="rounded-2xl bg-white p-6 shadow-sm">
+      <div className="rounded-2xl bg-elev p-6 shadow-sm">
         <div className="mb-6 flex items-center gap-3">
-          <div className="h-12 w-12 overflow-hidden rounded-full bg-gray-200">
+          <div className="h-12 w-12 overflow-hidden rounded-full bg-line">
             {booking.musician?.user?.avatar_url && (
               <img src={booking.musician.user.avatar_url} alt="" className="h-full w-full object-cover" />
             )}
@@ -77,10 +77,10 @@ export const ReviewPage = () => {
             {...register('reviewText', { required: 'Tell us about your experience', minLength: { value: 20, message: 'Min 20 characters' } })}
             className="w-full rounded-lg border px-3 py-2"
           />
-          {errors.reviewText && <p className="mt-1 text-xs text-red-600">{errors.reviewText.message}</p>}
+          {errors.reviewText && <p className="mt-1 text-xs text-red-400">{errors.reviewText.message}</p>}
           <button
             disabled={submitting}
-            className="mt-4 w-full rounded-lg bg-brand-600 py-2.5 font-medium text-white disabled:opacity-50"
+            className="mt-4 w-full rounded-lg bg-brand-400 text-black py-2.5 font-medium text-white disabled:opacity-50"
           >
             {submitting ? 'Submitting…' : 'Submit review'}
           </button>

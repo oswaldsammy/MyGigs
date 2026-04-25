@@ -79,10 +79,10 @@ export const MessageThread = ({ bookingId, currentUserId, role }: Props) => {
     setSending(false);
   };
 
-  const ownBubble = role === 'client' ? 'bg-purple-600 text-white' : 'bg-teal-600 text-white';
+  const ownBubble = role === 'client' ? 'bg-brand-400 text-black text-white' : 'bg-brand-400 text-black text-white';
 
   return (
-    <div className="flex h-[70vh] flex-col rounded-xl border bg-white">
+    <div className="flex h-[70vh] flex-col rounded-xl border bg-elev">
       <div className="flex-1 space-y-3 overflow-y-auto p-4">
         {loading ? (
           <p className="text-center text-sm text-gray-500">Loading messages…</p>
@@ -95,7 +95,7 @@ export const MessageThread = ({ bookingId, currentUserId, role }: Props) => {
               <div key={m.id} className={`flex ${mine ? 'justify-end' : 'justify-start'}`}>
                 <div
                   className={`max-w-[70%] rounded-2xl px-4 py-2 text-sm ${
-                    mine ? ownBubble : 'bg-gray-100 text-gray-900'
+                    mine ? ownBubble : 'bg-elev text-white'
                   }`}
                 >
                   {m.file_url && (
@@ -139,7 +139,7 @@ export const MessageThread = ({ bookingId, currentUserId, role }: Props) => {
           <button
             disabled={sending || !input.trim()}
             onClick={() => void send(input)}
-            className="rounded-lg bg-brand-600 px-4 py-2 text-sm text-white disabled:opacity-50"
+            className="rounded-lg bg-brand-400 text-black px-4 py-2 text-sm text-white disabled:opacity-50"
           >
             Send
           </button>

@@ -31,11 +31,11 @@ export const MessagesListPage = () => {
       ) : sorted.length === 0 ? (
         <div className="rounded-xl border-2 border-dashed p-12 text-center text-gray-500">No messages yet.</div>
       ) : (
-        <div className="divide-y rounded-xl border bg-white">
+        <div className="divide-y rounded-xl border bg-elev">
           {sorted.map((c) => (
             <Link key={c.bookingId} to={`/messages/${c.bookingId}`}
-              className="flex items-center gap-3 p-4 hover:bg-gray-50">
-              <div className="h-12 w-12 overflow-hidden rounded-full bg-gray-200">
+              className="flex items-center gap-3 p-4 hover:bg-surface">
+              <div className="h-12 w-12 overflow-hidden rounded-full bg-line">
                 {c.otherAvatar && <img src={c.otherAvatar} alt="" className="h-full w-full object-cover" />}
               </div>
               <div className="min-w-0 flex-1">
@@ -50,7 +50,7 @@ export const MessagesListPage = () => {
                 </p>
               </div>
               {c.unread > 0 && (
-                <span className="rounded-full bg-brand-600 px-2 py-0.5 text-xs text-white">{c.unread}</span>
+                <span className="rounded-full bg-brand-400 text-black px-2 py-0.5 text-xs text-white">{c.unread}</span>
               )}
             </Link>
           ))}

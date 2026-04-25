@@ -27,7 +27,7 @@ export const AvailabilityGrid = ({ value, onChange, readOnly }: Props) => {
     <div>
       {!readOnly && (
         <div className="mb-2 flex justify-end">
-          <button type="button" onClick={markAll} className="text-sm text-brand-600 hover:underline">
+          <button type="button" onClick={markAll} className="text-sm text-brand-400 hover:underline">
             Mark all available
           </button>
         </div>
@@ -35,7 +35,7 @@ export const AvailabilityGrid = ({ value, onChange, readOnly }: Props) => {
       <div className="overflow-x-auto">
         <table className="w-full border-collapse text-center text-sm">
           <thead>
-            <tr className="bg-gray-50">
+            <tr className="bg-surface">
               <th className="border p-2 text-left font-medium">Day</th>
               {SLOTS.map((s) => <th key={s} className="border p-2 font-medium">{s}</th>)}
             </tr>
@@ -53,7 +53,7 @@ export const AvailabilityGrid = ({ value, onChange, readOnly }: Props) => {
                         disabled={readOnly}
                         onClick={() => toggle(day, slot)}
                         className={`w-full rounded-md px-2 py-2 text-xs ${
-                          on ? 'bg-brand-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                          on ? 'bg-brand-400 text-black' : 'bg-elev text-gray-400 hover:bg-line'
                         } ${readOnly ? 'cursor-default' : ''}`}
                       >
                         {on ? '✓ Available' : 'Off'}

@@ -15,10 +15,10 @@ export interface MusicianCardProps {
 export const MusicianCard = ({ id, name, instruments, city, rating, price, avatarUrl }: MusicianCardProps) => (
   <Link
     to={`/musician/${id}`}
-    className="flex flex-col rounded-2xl border bg-white p-4 shadow-sm transition hover:shadow-md"
+    className="flex flex-col rounded-2xl border bg-elev p-4 shadow-sm transition hover:shadow-md"
   >
     <div className="flex items-start gap-3">
-      <div className="h-14 w-14 flex-shrink-0 overflow-hidden rounded-full bg-gray-200">
+      <div className="h-14 w-14 flex-shrink-0 overflow-hidden rounded-full bg-line">
         {avatarUrl ? <img src={avatarUrl} alt={name} className="h-full w-full object-cover" /> : null}
       </div>
       <div className="min-w-0 flex-1">
@@ -32,16 +32,16 @@ export const MusicianCard = ({ id, name, instruments, city, rating, price, avata
     </div>
     <div className="mt-3 flex flex-wrap gap-1">
       {instruments.slice(0, 3).map((i) => (
-        <span key={i} className="rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-700">
+        <span key={i} className="rounded-full bg-elev px-2 py-0.5 text-xs text-gray-300">
           {i}
         </span>
       ))}
     </div>
     <div className="mt-3 flex items-center justify-between border-t pt-3 text-sm">
-      <span className="font-semibold text-brand-600">
+      <span className="font-semibold text-brand-400">
         {price != null ? `${formatCurrency(price)}/hr` : '—'}
       </span>
-      <span className="text-brand-600 hover:underline">View profile →</span>
+      <span className="text-brand-400 hover:underline">View profile →</span>
     </div>
   </Link>
 );

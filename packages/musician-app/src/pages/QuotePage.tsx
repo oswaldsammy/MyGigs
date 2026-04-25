@@ -48,12 +48,12 @@ export const QuotePage = () => {
 
   return (
     <div className="mx-auto max-w-xl px-6 py-8">
-      <div className="mb-4 rounded-2xl border bg-white p-4 text-sm">
+      <div className="mb-4 rounded-2xl border bg-elev p-4 text-sm">
         <p className="font-semibold">{formatDate(booking.event_date)}</p>
         <p className="text-gray-500">{booking.duration_hours} hours · {booking.venue_name ?? '—'}</p>
       </div>
 
-      <div className="rounded-2xl bg-white p-6 shadow-sm">
+      <div className="rounded-2xl bg-elev p-6 shadow-sm">
         <h1 className="mb-4 text-xl font-bold">Send a quote</h1>
 
         <div className="grid grid-cols-2 gap-3">
@@ -67,7 +67,7 @@ export const QuotePage = () => {
           </Field>
         </div>
 
-        <div className="mt-4 rounded-xl bg-gray-50 p-4 text-sm">
+        <div className="mt-4 rounded-xl bg-surface p-4 text-sm">
           <Row k="Quote total" v={formatCurrency(subtotal)} />
           <Row k="Platform fee (10%)" v={`− ${formatCurrency(fee)}`} />
           <Row k="Your earnings" v={formatCurrency(earnings)} bold />
@@ -82,7 +82,7 @@ export const QuotePage = () => {
           <div className="flex gap-2">
             {[24, 48, 72].map((h) => (
               <button key={h} type="button" onClick={() => setExpires(h)}
-                className={`rounded-lg border px-3 py-1.5 text-sm ${expires === h ? 'border-brand-600 bg-brand-50 text-brand-700' : ''}`}>
+                className={`rounded-lg border px-3 py-1.5 text-sm ${expires === h ? 'border-brand-400 bg-brand-400/10 text-brand-400' : ''}`}>
                 {h} hrs
               </button>
             ))}
@@ -90,7 +90,7 @@ export const QuotePage = () => {
         </Field>
 
         <button disabled={submitting} onClick={submit}
-          className="mt-6 w-full rounded-lg bg-brand-600 py-2.5 font-medium text-white disabled:opacity-50">
+          className="mt-6 w-full rounded-lg bg-brand-400 text-black py-2.5 font-medium text-white disabled:opacity-50">
           {submitting ? 'Sending…' : 'Send quote'}
         </button>
       </div>
@@ -107,6 +107,6 @@ const Field = ({ label, children, className }: { label: string; children: React.
 
 const Row = ({ k, v, bold }: { k: string; v: string; bold?: boolean }) => (
   <div className={`flex justify-between py-0.5 ${bold ? 'mt-1 border-t pt-2 font-semibold' : ''}`}>
-    <span className="text-gray-600">{k}</span><span>{v}</span>
+    <span className="text-gray-400">{k}</span><span>{v}</span>
   </div>
 );

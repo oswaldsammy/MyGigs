@@ -43,7 +43,7 @@ export const ReviewsPage = () => {
       <h1 className="mb-4 text-2xl font-bold">Reviews</h1>
 
       {summary ? (
-        <div className="mb-6 rounded-2xl bg-white p-5 shadow-sm">
+        <div className="mb-6 rounded-2xl bg-elev p-5 shadow-sm">
           <div className="flex items-center gap-4">
             <div>
               <p className="text-4xl font-bold">{summary.avg.toFixed(1)}</p>
@@ -57,7 +57,7 @@ export const ReviewsPage = () => {
                 return (
                   <div key={star} className="flex items-center gap-2 text-xs">
                     <span className="w-4">{star}★</span>
-                    <div className="h-2 flex-1 overflow-hidden rounded-full bg-gray-100">
+                    <div className="h-2 flex-1 overflow-hidden rounded-full bg-elev">
                       <div className="h-full bg-amber-400" style={{ width: `${pct}%` }} />
                     </div>
                     <span className="w-8 text-right text-gray-500">{count}</span>
@@ -77,7 +77,7 @@ export const ReviewsPage = () => {
         <div className="mb-4 flex gap-1 border-b">
           {(['all', '5', '4', 'low'] as Filter[]).map((f) => (
             <button key={f} onClick={() => setFilter(f)}
-              className={`px-4 py-2 text-sm ${filter === f ? 'border-b-2 border-brand-600 text-brand-600' : 'text-gray-500 hover:text-gray-900'}`}>
+              className={`px-4 py-2 text-sm ${filter === f ? 'border-b-2 border-brand-400 text-brand-400' : 'text-gray-500 hover:text-white'}`}>
               {f === 'all' ? 'All' : f === '5' ? '5 star' : f === '4' ? '4 star' : '3 star and below'}
             </button>
           ))}
@@ -86,25 +86,25 @@ export const ReviewsPage = () => {
 
       <div className="space-y-3">
         {(filtered ?? []).map((r) => (
-          <div key={r.id} className="rounded-xl border bg-white p-4">
+          <div key={r.id} className="rounded-xl border bg-elev p-4">
             <div className="flex items-center justify-between">
               <StarRating value={r.rating} size="sm" />
               <span className="text-xs text-gray-500">{new Date(r.created_at).toLocaleDateString()}</span>
             </div>
-            <p className="mt-2 text-gray-800">{r.review_text}</p>
+            <p className="mt-2 text-gray-100">{r.review_text}</p>
 
             {r.musician_response && editing !== r.id && (
-              <div className="mt-3 border-l-4 border-brand-200 bg-brand-50 p-3 text-sm">
-                <p className="mb-1 font-semibold text-brand-700">Your response</p>
+              <div className="mt-3 border-l-4 border-brand-200 bg-brand-400/10 p-3 text-sm">
+                <p className="mb-1 font-semibold text-brand-400">Your response</p>
                 <p>{r.musician_response}</p>
                 <button onClick={() => { setEditing(r.id); setDraft(r.musician_response ?? ''); }}
-                  className="mt-1 text-xs text-brand-600 hover:underline">Edit reply</button>
+                  className="mt-1 text-xs text-brand-400 hover:underline">Edit reply</button>
               </div>
             )}
 
             {!r.musician_response && editing !== r.id && (
               <button onClick={() => { setEditing(r.id); setDraft(''); }}
-                className="mt-2 text-sm text-brand-600 hover:underline">
+                className="mt-2 text-sm text-brand-400 hover:underline">
                 Reply to this review
               </button>
             )}
@@ -115,7 +115,7 @@ export const ReviewsPage = () => {
                   className="w-full rounded-lg border px-3 py-2 text-sm" />
                 <div className="mt-2 flex gap-2">
                   <button onClick={() => submitReply(r.id)}
-                    className="rounded-lg bg-brand-600 px-3 py-1.5 text-sm text-white">Post reply</button>
+                    className="rounded-lg bg-brand-400 text-black px-3 py-1.5 text-sm text-white">Post reply</button>
                   <button onClick={() => setEditing(null)}
                     className="rounded-lg border px-3 py-1.5 text-sm">Cancel</button>
                 </div>

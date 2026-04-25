@@ -15,7 +15,7 @@ export const ProtectedRoute = ({ children, requireRole }: Props) => {
     return <Navigate to="/auth/login" replace state={{ from: location }} />;
   }
   if (requireRole && role !== requireRole) {
-    return <div className="p-8 text-center text-red-600">This app is for {requireRole}s only.</div>;
+    return <div className="p-8 text-center text-red-400">This app is for {requireRole}s only.</div>;
   }
   return <>{children}</>;
 };

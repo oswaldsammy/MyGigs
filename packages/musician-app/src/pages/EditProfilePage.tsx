@@ -43,20 +43,20 @@ export const EditProfilePage = () => {
   return (
     <div className="mx-auto max-w-2xl space-y-6 px-6 py-8">
       {m.kyc_status === 'rejected' && (
-        <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-800">
+        <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-300">
           Your KYC was rejected. <Link to="/kyc" className="underline">Re-upload documents →</Link>
         </div>
       )}
 
       {user && (
-        <Link to={`/profile-preview/${user.id}`} className="block text-sm text-brand-600 hover:underline">
+        <Link to={`/profile-preview/${user.id}`} className="block text-sm text-brand-400 hover:underline">
           See how clients see your profile →
         </Link>
       )}
 
       <Section title="Photo" busy={savingSection === 'Photo'}>
         <div className="flex items-center gap-4">
-          <div className="h-20 w-20 overflow-hidden rounded-full bg-gray-200">
+          <div className="h-20 w-20 overflow-hidden rounded-full bg-line">
             {me.avatar_url && <img src={me.avatar_url} alt="" className="h-full w-full object-cover" />}
           </div>
           <FileUpload folder="avatars" accept="image/*" label="Change photo"
@@ -123,7 +123,7 @@ export const EditProfilePage = () => {
                 setM2({ sample_tracks: arr });
               }} className="flex-1 rounded-lg border px-2 py-1 text-sm" />
               <button onClick={() => setM2({ sample_tracks: (m.sample_tracks ?? []).filter((_, j) => j !== i) })}
-                className="text-xs text-red-600 hover:underline">Remove</button>
+                className="text-xs text-red-400 hover:underline">Remove</button>
             </div>
           ))}
           {(m.sample_tracks ?? []).length < 5 && (
@@ -142,16 +142,16 @@ export const EditProfilePage = () => {
         <SaveBtn onClick={() => saveSection('Availability', () => updateMyMusician({ availability: m.availability }))} />
       </Section>
 
-      <div className="rounded-2xl border border-red-200 bg-white p-6">
-        <h2 className="mb-2 font-semibold text-red-600">Account</h2>
-        <button onClick={signOut} className="text-sm text-red-600 hover:underline">Sign out</button>
+      <div className="rounded-2xl border border-red-500/30 bg-elev p-6">
+        <h2 className="mb-2 font-semibold text-red-400">Account</h2>
+        <button onClick={signOut} className="text-sm text-red-400 hover:underline">Sign out</button>
       </div>
     </div>
   );
 };
 
 const Section = ({ title, children, busy }: { title: string; children: React.ReactNode; busy?: boolean }) => (
-  <div className="rounded-2xl bg-white p-6 shadow-sm">
+  <div className="rounded-2xl bg-elev p-6 shadow-sm">
     <div className="mb-3 flex items-center justify-between">
       <h2 className="font-semibold">{title}</h2>
       {busy && <span className="text-xs text-gray-500">Saving…</span>}
@@ -175,7 +175,7 @@ const Chips = ({ label, options, selected, onToggle }: { label: string; options:
         const on = selected.includes(o);
         return (
           <button type="button" key={o} onClick={() => onToggle(o)}
-            className={`rounded-full px-3 py-1 text-sm ${on ? 'bg-brand-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
+            className={`rounded-full px-3 py-1 text-sm ${on ? 'bg-brand-400 text-black' : 'bg-elev text-gray-300 hover:bg-line'}`}>
             {o}
           </button>
         );
@@ -185,5 +185,5 @@ const Chips = ({ label, options, selected, onToggle }: { label: string; options:
 );
 
 const SaveBtn = ({ onClick }: { onClick: () => void }) => (
-  <button onClick={onClick} className="rounded-lg bg-brand-600 px-4 py-2 text-sm text-white">Save</button>
+  <button onClick={onClick} className="rounded-lg bg-brand-400 text-black px-4 py-2 text-sm text-white">Save</button>
 );
